@@ -1,0 +1,25 @@
+{
+  "short_name": "RoyaleAPI",
+  "name": "RoyaleStats - Edgar Miró",
+  "icons": [
+    {
+      "src": "logox2.png",
+      "type": "image/png",
+      "sizes": "48x48"
+    },
+    {
+      "src": "logox2.png",
+      "type": "image/png",
+      "sizes": "96x96"
+    },
+    {
+      "src": "logo2x.png",
+      "type": "image/png",
+      "sizes": "192x192"
+    }
+  ],
+  "start_url": "about",
+  "background_color": "#000660",
+  "display": "standalone",
+  "theme_color": "#2196F3"
+}

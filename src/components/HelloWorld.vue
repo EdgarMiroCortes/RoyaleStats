@@ -1,147 +1,141 @@
 <template>
-  <v-container>
-    <v-layout
-      text-xs-center
-      wrap
-    >
-      <v-flex xs12>
-        <v-img
-          :src="require('../assets/logo.svg')"
-          class="my-3"
-          contain
-          height="200"
-        ></v-img>
-      </v-flex>
-
-      <v-flex mb-4>
-        <h1 class="display-2 font-weight-bold mb-3">
-          Welcome to Vuetify
-        </h1>
-        <p class="subheading font-weight-regular">
-          For help and collaboration with other Vuetify developers,
-          <br>please join our online
-          <a href="https://community.vuetifyjs.com" target="_blank">Discord Community</a>
-        </p>
-      </v-flex>
-
-      <v-flex
-        mb-5
-        xs12
+  <v-container v-if="datos.length != 0" id="fff">
+    <h2 class="titulo">User Stats</h2>
+    <br>
+    <p class="nombretag">
+      {{datos.name}}
+      <a class="tag">#{{datos.tag}}</a>
+    </p>
+    <p>
+      Trophies
+      <img
+        class="imgcopas"
+        src="https://pngimage.net/wp-content/uploads/2018/05/copa-clash-royale-png-6.png"
       >
-        <h2 class="headline font-weight-bold mb-3">What's next?</h2>
+    </p>
+    <div class="textomini">
+      <p>Actual: <a class="derecha">{{datos.trophies}}</a></p>
+      <p>Maximo: <a class="derecha">{{datos.stats.maxTrophies}}</a></p>
+    </div>
+    <div id="ffff">
+    <p>Stats <img class="imgcopas" src="https://cdn.statsroyale.com/images/battle.png"></p>
+    </div>
+    <div class="textomini">
+      <p>Victorias: <a class="derecha">{{datos.games.wins}}</a></p>
+      <p>Derrotas: <a class="derecha">{{datos.games.losses}}</a></p>
+      <p>Donaciones: <a class="derecha">{{datos.stats.totalDonations}}</a></p>
+    </div>
+    <div class="mazo">
+      <v-img
+        v-for="carta in datos.currentDeck"
+        :key="carta.name"
+        class="foto-carta"
+        :src="carta.icon"
+      ></v-img>
+    </div>
+<p>Elixir Cost: 2'8</p>
 
-        <v-layout justify-center>
-          <a
-            v-for="(next, i) in whatsNext"
-            :key="i"
-            :href="next.href"
-            class="subheading mx-3"
-            target="_blank"
-          >
-            {{ next.text }}
-          </a>
-        </v-layout>
-      </v-flex>
-
-      <v-flex
-        xs12
-        mb-5
-      >
-        <h2 class="headline font-weight-bold mb-3">Important Links</h2>
-
-        <v-layout justify-center>
-          <a
-            v-for="(link, i) in importantLinks"
-            :key="i"
-            :href="link.href"
-            class="subheading mx-3"
-            target="_blank"
-          >
-            {{ link.text }}
-          </a>
-        </v-layout>
-      </v-flex>
-
-      <v-flex
-        xs12
-        mb-5
-      >
-        <h2 class="headline font-weight-bold mb-3">Ecosystem</h2>
-
-        <v-layout justify-center>
-          <a
-            v-for="(eco, i) in ecosystem"
-            :key="i"
-            :href="eco.href"
-            class="subheading mx-3"
-            target="_blank"
-          >
-            {{ eco.text }}
-          </a>
-        </v-layout>
-      </v-flex>
-    </v-layout>
+    <div block>
+      <v-btn block color="blue" dark to="/Cofres">Chest Info</v-btn>
+      <v-btn block color="blue" dark  @click="enviar">Clan Info</v-btn>
+    </div>
+    <br><br>
   </v-container>
 </template>
 
 <script>
-  export default {
-    data: () => ({
-      ecosystem: [
-        {
-          text: 'vuetify-loader',
-          href: 'https://github.com/vuetifyjs/vuetify-loader'
-        },
-        {
-          text: 'github',
-          href: 'https://github.com/vuetifyjs/vuetify'
-        },
-        {
-          text: 'awesome-vuetify',
-          href: 'https://github.com/vuetifyjs/awesome-vuetify'
-        }
-      ],
-      importantLinks: [
-        {
-          text: 'Documentation',
-          href: 'https://vuetifyjs.com'
-        },
-        {
-          text: 'Chat',
-          href: 'https://community.vuetifyjs.com'
-        },
-        {
-          text: 'Made with Vuetify',
-          href: 'https://madewithvuetifyjs.com'
-        },
-        {
-          text: 'Twitter',
-          href: 'https://twitter.com/vuetifyjs'
-        },
-        {
-          text: 'Articles',
-          href: 'https://medium.com/vuetify'
-        }
-      ],
-      whatsNext: [
-        {
-          text: 'Explore components',
-          href: 'https://vuetifyjs.com/components/api-explorer'
-        },
-        {
-          text: 'Select a layout',
-          href: 'https://vuetifyjs.com/layout/pre-defined'
-        },
-        {
-          text: 'Frequently Asked Questions',
-          href: 'https://vuetifyjs.com/getting-started/frequently-asked-questions'
-        }
-
-      ]
-    })
+export default {
+  props: ["id"],
+  data() {
+    return {
+    };
+  },
+  methods: {
+      enviar(){
+    this.$store.commit("tagclan", this.datos.clan.tag);
+    this.$router.push("/clan");
   }
+  },
+  created() {
+    this.$store.dispatch("getDatos");
+  },
+  
+  computed: {
+    datos() {
+      return this.$store.getters.getAlldatos;
+    },
+      tagclan(){
+    return this.$store.getters.gettagclan;
+  }
+  }
+};
 </script>
 
-<style>
+<style scoped>
+#ffff{
+  flex-flow: row;
+  align-items:baseline;
+}
+.derecha{
+  float: right;
+  margin-right: 5%; 
+}
+.nombretag {
+  text-align: center;
+}
+.tag {
+  font-size: 10px;
+}
+.textomini {
+  font-size: 12px;
+}
+.imgcopas {
+  margin-bottom: -6px;
+  width: 9%;
+  height: 9%;
+}
+.titulo {
+  text-align: center;
+}
+#fff {
+  background-image: url("https://userscontent2.emaze.com/images/a16de044-d648-438f-9d4d-6fdb2569d298/69cad4b7a425f8814c2753078c3fb3dd.png");
+  background-repeat: repeat-y;
+  font-size: 16px;
+  padding-left: 10%;
+  padding-right: 10%;
+    -webkit-text-stroke: 1px black;
+   color: white;
+   text-shadow:
+       1px 2px 0 #000,
+     -1px -1px 0 #000,  
+      1px -1px 0 #000,
+      -1px 1px 0 #000,
+       1px 1px 0 #000;
+}
+/* .mazo {
+    display: flex;
+  flex-flow: row;
+  } */
 
+.foto-carta {
+  width: 17%;
+  height: 17%;
+  margin-left: 2%;
+  margin-right: 2%;
+}
+.mazo {
+  display: flex;
+  flex-wrap: wrap;
+}
+.v-text-field input {
+    -webkit-box-flex: 1;
+    -ms-flex: 1 1 auto;
+    flex: 1 1 auto;
+    line-height: 20px;
+    padding: 8px 0 8px;
+    max-width: 100%;
+    min-width: 0px;
+    width: 100%;
+    color: aqua;
+}
 </style>

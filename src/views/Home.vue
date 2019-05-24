@@ -1,5 +1,5 @@
 <template>
-  <HelloWorld />
+  <h1>Hey</h1>
 </template>
 
 <script>
@@ -9,5 +9,5 @@
     components: {
       HelloWorld
     }
-  }
+  } 
 </script>

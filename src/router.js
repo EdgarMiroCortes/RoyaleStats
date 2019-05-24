@@ -1,24 +1,40 @@
 import Vue from "vue";
 import Router from "vue-router";
 import Home from "./views/Home.vue";
+import Clan from "./views/Clan.vue";
+import Cofres from "./views/Cofres.vue";
+import HelloWorld from "./components/HelloWorld.vue";
+import About from "./views/About.vue"
+import members from "./views/Members.vue"
 
 Vue.use(Router);
 
 export default new Router({
   routes: [
     {
-      path: "/",
+      path: "/home",
       name: "home",
-      component: Home
+      component: HelloWorld
     },
     {
-      path: "/about",
+      path: "/clan",
+      name: "Clan",
+      component: Clan
+    },
+    {
+      path: "/Cofres",
+      name: "Cofres",
+      component: Cofres
+    },
+    {
+      path: "/",
       name: "about",
-      // route level code-splitting
-      // this generates a separate chunk (about.[hash].js) for this route
-      // which is lazy-loaded when the route is visited.
-      component: () =>
-        import(/* webpackChunkName: "about" */ "./views/About.vue")
-    }
+      component: About
+    },
+    {
+      path: "/members",
+      name: "members",
+      component: members
+    },
   ]
 });

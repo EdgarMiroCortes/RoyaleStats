@@ -1,0 +1,7 @@
+@font-face {
+    font-family: 'Supercell-Magic'; /*a name to be used later*/
+    src: url('./Supercell-magic-webfont.ttf'); /*URL to font*/
+}
+*{
+    font-family: 'Supercell-Magic'
+}
