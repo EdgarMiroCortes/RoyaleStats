@@ -1,5 +1,5 @@
 <template>
-  <v-container v-if="datos.length != 0" id="fff">
+    <v-container v-if="datos.length != 0" id="fff">
     <h2 class="titulo">User Stats</h2>
     <br>
     <p class="nombretag">
@@ -45,13 +45,13 @@
 
 <script>
 export default {
-  props: ["id"],
+ props: ["id"],
   data() {
     return {
     };
   },
   methods: {
-      enviar(){
+    enviar(){
     this.$store.commit("tagclan", this.datos.clan.tag);
     this.$router.push("/clan");
   }

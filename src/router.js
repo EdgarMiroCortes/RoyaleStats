@@ -1,20 +1,26 @@
 import Vue from "vue";
 import Router from "vue-router";
-import Home from "./views/Home.vue";
 import Clan from "./views/Clan.vue";
 import Cofres from "./views/Cofres.vue";
-import HelloWorld from "./components/HelloWorld.vue";
+import userstats from "./components/userstats.vue";
 import About from "./views/About.vue"
 import members from "./views/Members.vue"
+import chat from "./views/chat.vue"
+import cards from "./views/cards.vue"
 
 Vue.use(Router);
 
 export default new Router({
   routes: [
     {
-      path: "/home",
-      name: "home",
-      component: HelloWorld
+      path: "/userstats",
+      name: "userstats",
+      component: userstats
+    },
+    {
+      path: "/userstats",
+      name: "userstats",
+      component: userstats
     },
     {
       path: "/clan",
@@ -35,6 +41,16 @@ export default new Router({
       path: "/members",
       name: "members",
       component: members
+    },
+    {
+      path: "/chat",
+      name: "chat",
+      component: chat
+    },
+    {
+      path: "/cards",
+      name: "cards",
+      component: cards
     },
   ]
 });

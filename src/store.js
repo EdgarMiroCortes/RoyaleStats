@@ -6,19 +6,26 @@ Vue.use(Vuex);
 export default new Vuex.Store({
   state: {
     tag:"",
+    tagmember:"",
     datos:[],
     datosClan:[],
     datoschest:[],
+    datoscards:[],
+    datosmember:[],
     tagclan: "",
     url: "https://api.royaleapi.com/player/",
     urlClan: "https://api.royaleapi.com/clan/",
     urlChest: "https://api.royaleapi.com/player/RLGLPCU/chests",
+    urlCards: "https://api.royaleapi.com/constants",
     key: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MjU4MCwiaWRlbiI6IjI3NjM5MjM2ODY3NDk2MzQ1NyIsIm1kIjp7InVzZXJuYW1lIjoiRWRnYXJNaXJvIiwia2V5VmVyc2lvbiI6MywiZGlzY3JpbWluYXRvciI6IjQ1MzcifSwidHMiOjE1NTcyNDE3NTY0OTd9.-rViE1snbwa0wGgBteJhLcsbkkJ21NDUAAivcgYALRQ",
 
   },
   mutations: {
     setdatos(state, data){
       state.datos = data
+    },
+    setdatosmember(state, data){
+      state.datosmember = data
     },
     setdatosclan(state, data){
       state.datosClan = data
@@ -31,6 +38,9 @@ export default new Vuex.Store({
     },
     tagclan(state, payload) {
       state.tagclan = payload;
+    },
+    setdatoscards(state, data){
+      state.datoscards = data
     }
   },  
   actions: {
@@ -70,6 +80,30 @@ export default new Vuex.Store({
           data)
         })
     },
+    getDatosCartas(context){
+      fetch(context.state.urlCards,{
+        "async": true,
+        "crossDomain": true,
+        "headers":{"auth":context.state.key}
+      })
+        .then(json => json.json())
+        .then(data => {
+          context.commit("setdatoscardss",
+          data)
+        })
+    },
+    getDatosMember(context){
+      fetch(((context.state.url)+(context.state.tagmember)),{
+        "async": true,
+        "crossDomain": true,
+        "headers":{"auth":context.state.key}
+      })
+        .then(json => json.json())
+        .then(data => {
+          context.commit("setdatosmember",
+          data)
+        })
+    },
   },
   getters:{
     getName(state){
@@ -89,6 +123,12 @@ export default new Vuex.Store({
     },
     gettagclan(state) {
       return state.tagclan;
-    }
+    },
+    getdatoscards(state) {
+      return state.datoscards;
+    },
+    getDatosMember(state){
+      return state.datosmember
+    },
   }
 });

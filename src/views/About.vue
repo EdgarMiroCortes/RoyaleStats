@@ -6,17 +6,16 @@
         class="descinicio"
       >See all your stats, upcoming chests, top decks, and comunity recomendations. Try it introducing your #TAG, and enjoy it!</p>
       <v-flex xs12 sm6 md3>
-        <v-icon @click="send" class="material-icons flecha">arrow_forward_ios</v-icon>
+        <v-icon color="white" @click="send" class="material-icons flecha">arrow_forward_ios</v-icon>
         <v-text-field id="tag" class="idinput" placeholder="Your #TAG" v-model="tag2"></v-text-field>
         
         <div class="text-xs-center">
-          <v-btn round class="letrablanca">CHAT</v-btn>
-          <v-btn round class="letrablanca">DECKS</v-btn>
         </div>
       </v-flex>
     </v-container>
     <v-container fluid class="banner">
-      <v-img class="imgking" src="king2.png"></v-img>
+      <v-img class="imgking" src="king3.png"></v-img>
+
     </v-container>
   </v-container>
 </template>
@@ -31,7 +30,7 @@ export default {
   methods: {
     send() {
       this.$store.commit("settag", this.tag2);
-      this.$router.push("/home");
+      this.$router.push("/userstats");
     }
   },
   computed: {
@@ -62,6 +61,7 @@ export default {
   color: white;
   text-shadow: 1px 2px 0 #000, -1px -1px 0 #000, 1px -1px 0 #000,
     -1px 1px 0 #000, 1px 1px 0 #000;
+    height: 100vh;
 }
 .qwerty {
   text-align: center;
@@ -116,5 +116,8 @@ export default {
   .theme--light.v-input:not(.v-input--is-disabled) textarea {
     color: rgba(255, 255, 255, 0.733);
   }
+.theme--light.v-input:not(.v-input--is-disabled) input, .theme--light.v-input:not(.v-input--is-disabled) textarea {
+    color: white;
+}
 }
 </style>
