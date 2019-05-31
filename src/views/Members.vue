@@ -23,8 +23,9 @@ export default {
   },
   methods: {
     send(tag) {
-      this.$store.commit("setdatosmember", this.tag);
+      this.$store.commit("settagmembers", tag);
       this.$router.push("/userstats2");
+      // console.log(tag)
     }
     },
   created() {

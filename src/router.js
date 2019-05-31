@@ -3,6 +3,7 @@ import Router from "vue-router";
 import Clan from "./views/Clan.vue";
 import Cofres from "./views/Cofres.vue";
 import userstats from "./components/userstats.vue";
+import userstats2 from "./components/userstats2.vue";
 import About from "./views/About.vue"
 import members from "./views/Members.vue"
 import chat from "./views/chat.vue"
@@ -18,9 +19,9 @@ export default new Router({
       component: userstats
     },
     {
-      path: "/userstats",
-      name: "userstats",
-      component: userstats
+      path: "/userstats2",
+      name: "userstats2",
+      component: userstats2
     },
     {
       path: "/clan",

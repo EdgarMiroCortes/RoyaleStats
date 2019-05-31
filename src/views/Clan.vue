@@ -82,4 +82,7 @@ export default {
     height: 100px;
     width: 100px;
 }
+.h2{
+  margin-top: 10%;
+}
 </style>

@@ -69,36 +69,6 @@ export default {
   justify-content: center;
   background-color: transparent;
 }
-/* .button1 {
- -webkit-box-align: center;
- -ms-flex-align: center;
- align-items: center;
- border-radius: 2px;
- display: -webkit-inline-box;
- display: -ms-inline-flexbox;
- display: inline-flex;
- height: 36px;
- -webkit-box-flex: 0;
- -ms-flex: 0 0 auto;
- flex: 0 0 auto;
- font-size: 7px;
- font-weight: 500;
- -webkit-box-pack: center;
- -ms-flex-pack: center;
- justify-content: center;
- margin: 0px 3px;
- outline: 0;
- text-transform: uppercase;
- text-decoration: none;
- -webkit-transition: 0.3s cubic-bezier(0.25, 0.8, 0.5, 1), color 1ms;
- transition: 0.3s cubic-bezier(0.25, 0.8, 0.5, 1), color 1ms;
- position: relative;
- vertical-align: middle;
- -webkit-user-select: none;
- -moz-user-select: none;
- -ms-user-select: none;
- user-select: none;
-} */
 
 .v-card-text {
  padding: 6px;

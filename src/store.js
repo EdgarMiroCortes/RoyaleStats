@@ -5,45 +5,69 @@ Vue.use(Vuex);
 
 export default new Vuex.Store({
   state: {
+    // user
     tag:"",
-    tagmember:"",
     datos:[],
-    datosClan:[],
-    datoschest:[],
-    datoscards:[],
-    datosmember:[],
-    tagclan: "",
     url: "https://api.royaleapi.com/player/",
-    urlClan: "https://api.royaleapi.com/clan/",
-    urlChest: "https://api.royaleapi.com/player/RLGLPCU/chests",
-    urlCards: "https://api.royaleapi.com/constants",
-    key: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MjU4MCwiaWRlbiI6IjI3NjM5MjM2ODY3NDk2MzQ1NyIsIm1kIjp7InVzZXJuYW1lIjoiRWRnYXJNaXJvIiwia2V5VmVyc2lvbiI6MywiZGlzY3JpbWluYXRvciI6IjQ1MzcifSwidHMiOjE1NTcyNDE3NTY0OTd9.-rViE1snbwa0wGgBteJhLcsbkkJ21NDUAAivcgYALRQ",
 
+    // miembro clan
+    tagmember:"",
+    datosmember:[],
+
+    // clan  
+    tagclan: "",
+    datosClan:[],
+    urlClan: "https://api.royaleapi.com/clan/",
+
+    // cofres
+    datoschest:[],
+    urlChest: "https://api.royaleapi.com/player/RLGLPCU/chests",
+
+    // cards (y todas las constantes)
+    datoscards:[],
+    urlCards: "https://api.royaleapi.com/constants",
+  
+    // key (pa to)
+    key: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MjU4MCwiaWRlbiI6IjI3NjM5MjM2ODY3NDk2MzQ1NyIsIm1kIjp7InVzZXJuYW1lIjoiRWRnYXJNaXJvIiwia2V5VmVyc2lvbiI6MywiZGlzY3JpbWluYXRvciI6IjQ1MzcifSwidHMiOjE1NTcyNDE3NTY0OTd9.-rViE1snbwa0wGgBteJhLcsbkkJ21NDUAAivcgYALRQ",
   },
   mutations: {
+    // datos user
     setdatos(state, data){
       state.datos = data
-    },
-    setdatosmember(state, data){
-      state.datosmember = data
-    },
-    setdatosclan(state, data){
-      state.datosClan = data
-    },
-    setdatoschest(state, data){
-      state.datoschest = data
-    },
+    },   
     settag(state, payload) {
       state.tag = payload;
     },
+
+    // datos miembro clan
+    setdatosmember(state, data){
+      state.datosmember = data
+    },    
+    settagmembers(state, payload) {
+      state.tagmember = payload;
+    },
+
+    // datos clan
+    setdatosclan(state, data){
+      state.datosClan = data
+    },    
     tagclan(state, payload) {
       state.tagclan = payload;
     },
+
+    // datos cofres
+    setdatoschest(state, data){
+      state.datoschest = data
+    },
+ 
+    // datos cartas
     setdatoscards(state, data){
       state.datoscards = data
     }
   },  
   actions: {
+
+    // fetch datos user
     getDatos(context){
       fetch(((context.state.url)+(context.state.tag)),{
         "async": true,
@@ -56,6 +80,8 @@ export default new Vuex.Store({
           data)
         })
     },
+
+    // fetch datos clan
     getDatosClan(context){
       fetch(((context.state.urlClan)+(context.state.tagclan)),{
         "async": true,
@@ -68,6 +94,8 @@ export default new Vuex.Store({
           data)
         })
     },
+
+    // fetch datos cofres
     getDatoschest(context){
       fetch(context.state.urlChest,{
         "async": true,
@@ -80,6 +108,8 @@ export default new Vuex.Store({
           data)
         })
     },
+
+    //fetch cartas (y todas las constantes del juego) 
     getDatosCartas(context){
       fetch(context.state.urlCards,{
         "async": true,
@@ -92,6 +122,8 @@ export default new Vuex.Store({
           data)
         })
     },
+
+    // fetch miembro clan
     getDatosMember(context){
       fetch(((context.state.url)+(context.state.tagmember)),{
         "async": true,
@@ -106,29 +138,39 @@ export default new Vuex.Store({
     },
   },
   getters:{
-    getName(state){
-      return state.name
+    // getters user
+    gettag(state) {
+      return state.tag;
     },
     getAlldatos(state){
       return state.datos
     },
+
+    // getters clan
     getAlldatosClan(state){
       return state.datosClan
-    },
-    getAlldatoschest(state){
-      return state.datoschest
-    },
-    gettag(state) {
-      return state.tag;
-    },
+    },    
     gettagclan(state) {
       return state.tagclan;
     },
+
+    // getters miembro clan    
+    getDatosMember(state){
+      return state.datosmember
+    },    
+    gettagmember(state) {
+      return state.tagmember;
+    },
+
+    // getter datos cofre (el tag esta en user)
+    getAlldatoschest(state){
+      return state.datoschest
+    },
+
+    // getter cartas (y todas las constantes del juego)
     getdatoscards(state) {
       return state.datoscards;
     },
-    getDatosMember(state){
-      return state.datosmember
-    },
+
   }
 });

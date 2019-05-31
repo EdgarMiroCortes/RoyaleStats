@@ -1,10 +1,10 @@
 <template>
-    <v-container v-if="datos.length != 0" id="fff">
+    <v-container v-if="datosmember.length != 0" id="fff">
     <h2 class="titulo">User Stats</h2>
     <br>
     <p class="nombretag">
-      {{datos.name}}
-      <a class="tag">#{{datos.tag}}</a>
+      {{datosmember.name}}
+      <a class="tag">#{{datosmember.tag}}</a>
     </p>
     <p>
       Trophies
@@ -14,20 +14,20 @@
       >
     </p>
     <div class="textomini">
-      <p>Actual: <a class="derecha">{{datos.trophies}}</a></p>
-      <p>Maximo: <a class="derecha">{{datos.stats.maxTrophies}}</a></p>
+      <p>Actual: <a class="derecha">{{datosmember.trophies}}</a></p>
+      <p>Maximo: <a class="derecha">{{datosmember.stats.maxTrophies}}</a></p>
     </div>
     <div id="ffff">
     <p>Stats <img class="imgcopas" src="https://cdn.statsroyale.com/images/battle.png"></p>
     </div>
     <div class="textomini">
-      <p>Victorias: <a class="derecha">{{datos.games.wins}}</a></p>
-      <p>Derrotas: <a class="derecha">{{datos.games.losses}}</a></p>
-      <p>Donaciones: <a class="derecha">{{datos.stats.totalDonations}}</a></p>
+      <p>Victorias: <a class="derecha">{{datosmember.games.wins}}</a></p>
+      <p>Derrotas: <a class="derecha">{{datosmember.games.losses}}</a></p>
+      <p>Donaciones: <a class="derecha">{{datosmember.stats.totalDonations}}</a></p>
     </div>
     <div class="mazo">
       <v-img
-        v-for="carta in datos.currentDeck"
+        v-for="carta in datosmember.currentDeck"
         :key="carta.name"
         class="foto-carta"
         :src="carta.icon"
@@ -52,17 +52,17 @@ export default {
   },
   methods: {
     enviar(){
-    this.$store.commit("tagclan", this.datos.clan.tag);
+    this.$store.commit("tagclan", this.datosmember.clan.tag);
     this.$router.push("/clan");
   }
   },
   created() {
-    this.$store.dispatch("getDatos");
+    this.$store.dispatch("getDatosMember");
   },
   
   computed: {
-    datos() {
-      return this.$store.getters.getAlldatos;
+    datosmember() {
+      return this.$store.getters.getDatosMember;
     },
       tagclan(){
     return this.$store.getters.gettagclan;
