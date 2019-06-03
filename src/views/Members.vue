@@ -43,7 +43,7 @@ export default {
 <style>
 #fff {
   background-image: url("https://userscontent2.emaze.com/images/a16de044-d648-438f-9d4d-6fdb2569d298/69cad4b7a425f8814c2753078c3fb3dd.png");
-  background-repeat: repeat-y;
+  background-repeat: repeat;
   font-size: 14px;
   padding-left: 10%;
   padding-right: 10%;
@@ -63,6 +63,8 @@ export default {
 }
 
 .h1clanmembers {
+  justify-content: center;
+  text-align: center;
   align-content: center;
 }
 .cardmiembros {

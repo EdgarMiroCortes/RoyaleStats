@@ -14,16 +14,16 @@
       >
     </p>
     <div class="textomini">
-      <p>Actual: <a class="derecha">{{datosmember.trophies}}</a></p>
-      <p>Maximo: <a class="derecha">{{datosmember.stats.maxTrophies}}</a></p>
+      <p>Live: <a class="derecha">{{datosmember.trophies}}</a></p>
+      <p>Max: <a class="derecha">{{datosmember.stats.maxTrophies}}</a></p>
     </div>
     <div id="ffff">
     <p>Stats <img class="imgcopas" src="https://cdn.statsroyale.com/images/battle.png"></p>
     </div>
     <div class="textomini">
-      <p>Victorias: <a class="derecha">{{datosmember.games.wins}}</a></p>
-      <p>Derrotas: <a class="derecha">{{datosmember.games.losses}}</a></p>
-      <p>Donaciones: <a class="derecha">{{datosmember.stats.totalDonations}}</a></p>
+      <p>Wins: <a class="derecha">{{datosmember.games.wins}}</a></p>
+      <p>Defeats: <a class="derecha">{{datosmember.games.losses}}</a></p>
+      <p>Donations: <a class="derecha">{{datosmember.stats.totalDonations}}</a></p>
     </div>
     <div class="mazo">
       <v-img
@@ -33,7 +33,6 @@
         :src="carta.icon"
       ></v-img>
     </div>
-<p>Elixir Cost: 2'8</p>
 
     <div block>
       <v-btn block color="blue" dark to="/Cofres">Chest Info</v-btn>

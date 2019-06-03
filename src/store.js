@@ -21,7 +21,7 @@ export default new Vuex.Store({
 
     // cofres
     datoschest:[],
-    urlChest: "https://api.royaleapi.com/player/RLGLPCU/chests",
+    urlChest: "https://api.royaleapi.com/player/",
 
     // cards (y todas las constantes)
     datoscards:[],
@@ -97,7 +97,7 @@ export default new Vuex.Store({
 
     // fetch datos cofres
     getDatoschest(context){
-      fetch(context.state.urlChest,{
+      fetch(((context.state.urlChest)+(context.state.tag)+("/chests")),{
         "async": true,
         "crossDomain": true,
         "headers":{"auth":context.state.key}
@@ -118,7 +118,7 @@ export default new Vuex.Store({
       })
         .then(json => json.json())
         .then(data => {
-          context.commit("setdatoscardss",
+          context.commit("setdatoscards",
           data)
         })
     },

@@ -1,8 +1,8 @@
 <template>
-    <v-container id="fff">
+    <v-container v-if="datoschest.length != 0" id="fff">
       <!-- <p>{{datoschest.upcoming}}</p> -->
       <v-card v-for="(cofre,i) in datoschest.upcoming" :key="i">
-        <p>{{cofre}}</p>
+        <v-img class="cofres" :src="cofre+'.png'"></v-img>
       </v-card>
         <p>Mega Lightning: {{datoschest.megaLightning}}</p>
         <p>Magical: {{datoschest.magical}}</p>
@@ -32,6 +32,10 @@ export default {
 </script>
 
 <style scoped>
+.cofres {
+width: 30%;
+height: 30%;
+}
 #fff {
   background-image: url("https://userscontent2.emaze.com/images/a16de044-d648-438f-9d4d-6fdb2569d298/69cad4b7a425f8814c2753078c3fb3dd.png");
   background-repeat: repeat-y;
